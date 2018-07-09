@@ -1,12 +1,9 @@
-import argparse
-import asyncio
-import logging
 import sys
 import os
 import pkgutil
-
+import logging
 from aiohttp import web
-from {{cookiecutter.project_slug}}.middlewares import *
+from {{cookiecutter.project_slug}}.middlewares import correlation_id, render_json
 from {{cookiecutter.project_slug}}.urls import routes
 
 
@@ -19,7 +16,7 @@ def autoload(module):
 
 async def create():
     autoload('{{cookiecutter.project_slug}}.views')
-    ap = argparse.ArgumentParser()
+    # ap = argparse.ArgumentParser()
     # init logging
     logging.basicConfig(level=logging.DEBUG)
     # setup application and extensions
